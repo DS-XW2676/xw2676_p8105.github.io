@@ -1,0 +1,61 @@
+---
+title: "CV"
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+---
+
+## Xinru Wang
+
+Tel: (01) 646-244-2005
+
+Email: xw2565@cumc.columbia.edu
+
+
+## Education and Credentials
+
+**Columbia University** [New York, New York]{style="float:right"}
+
+_Master, Biostatistics_ [September 2019 - Present]{style="float:right"}
+
+**Tianjin University** [Tianjin, China]{style="float:right"}
+
+_undergraduate, Qiushi Honor College, Chemical Engineering_ [September 2015 - July 2019]{style="float:right"}
+
+**Online Courses with Certificates** 
+
+_The Data Scientist's Toolbox, R Programming, Getting and Cleaning Data, Exploratory Data Analysis_ [Johns Hopkins University on Coursera (2018)]{style="float:right"}
+
+## Technical Skills
+
+_R, MATLAB, SAS, Latex, C, SPSS_
+
+## LANGUAGES
+
+English and Mandarin
+
+### Research Experience
+
+iGEM (Silver Medal), Project Title: “Romantic Switcher”, Tianjin university [03/2017-11/2017]{style="float:right"}
+
+Constructing Robust and Highly-selective Hydrogel Membranes by Bioadhesion-inspired Method for CO2 Separation, Tianjin University [05/2017-05/2018]{style="float:right"}
+
+_The Preparation and Liquid Separation Application of Graphene Oxide-Based Membranes
+Tianjin university_ [04/2018-05/2019]{style="float:right"}
+
+## Research Interest
+
+Interested in data analysis
+
+### Awards and Involvements
+
+_Honor of “Outstanding Student Cadres”, Tianjin University(10%)_ [2018]{style="float:right"}
+
+_Silver medal, iGEM_ [2017]{style="float:right"}
+
+## Publications
+
+_**X. Wang**, et al., Heterobimetallic metal–organic framework nanocages as highly efficient catalysts for CO2 conversion under mild conditions [J] Journal of Materials Chemistry A, DOI:10.1039/C7TA09082J, 2017_
+
+_**X. Wang**, et al., Constructing robust and highly-selective hydrogel membranes by bioadhesion- inspired method for CO2 separation [J] Journal of Membrane Science, DOI:10.1016/j.memsci.2018.05.075, 2018_
