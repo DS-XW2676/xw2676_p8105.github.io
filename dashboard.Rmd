@@ -1,0 +1,76 @@
+---
+title: "my first dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(flexdashboard)
+library(tidyverse)
+library(viridis)
+library(p8105.datasets)
+library(plotly)
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+data(instacart)
+instacart %>% 
+  count(aisle, aisle_id) %>% 
+  filter(n >= 20000) %>% 
+  mutate(text_label = str_c("Aisle: ", aisle)) %>% 
+  mutate(aisle_id = fct_reorder(as.factor(aisle_id), n)) %>% 
+  plot_ly(x = ~aisle_id, y = ~n, color = ~aisle_id, text = ~text_label, textposition = 'middle right', type = "bar") %>% 
+  layout(title = "Amount of items (>20k) bought from each aisles")
+
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+p = filter(instacart, product_name %in% c("Pink Lady Apples", "Coffee Ice Cream")) %>%  
+  mutate(
+    order_dow = as.factor(order_dow),
+    order_dow = factor(order_dow, levels = 0:6, labels = c("Sunday","Monday", "Tuesday",
+                          "Wednesday", 
+                          "Thursday", "Friday", 
+                          "Saturday"))
+  ) %>% 
+  ggplot(aes(x = order_dow, y = order_hour_of_day, group = order_dow, color = order_dow)) +
+  geom_boxplot() +
+  facet_grid(~product_name) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(
+    x = "",
+    y = ""
+  )
+ggplotly(p) %>% 
+  layout(xaxis = list(title = "Day of the week"),
+         yaxis = list(title = "Hour of the day"),
+         title = "Hour of day when each product bought in each day"
+         )
+```
+
+### Chart C
+
+```{r}
+
+```
+
