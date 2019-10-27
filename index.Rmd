@@ -10,11 +10,13 @@ output:
 
 I am Xinru Wang, a first year master student in [biostatistics department at Columbia University](https://www.mailman.columbia.edu/become-student/departments/biostatistics). 
 
-you can learn me more [here](cv.html)
+You can learn me more [here](cv.html)
 
 ## About this website
 
 This website contains [my academic and professional experience](cv.html) and [three plotly plots](dashboard.html) on flexdashboard.
+
+<img src="images/bio-1500x632-1.jpeg" style="width:75%">
 
 
 

@@ -1,9 +1,9 @@
 ---
-title: "my first dashboard"
-output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+title: "code for three plots"
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -21,12 +21,9 @@ scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 ```
 
-Column {data-width=500}
------------------------------------------------------------------------
-
 ### Hour of day when each product bought in each day
 
-```{r}
+```{r, eval = FALSE}
 data(instacart)
 p = filter(instacart, product_name %in% c("Pink Lady Apples", "Coffee Ice Cream")) %>%  
   mutate(
@@ -49,12 +46,9 @@ ggplotly(p) %>%
          yaxis = list(title = "Hour of the day"))
 ```
 
-Column {data-width=500}
------------------------------------------------------------------------
-
 ### Amount of items (>20k) bought from each aisles
 
-```{r}
+```{r, eval = FALSE}
 instacart %>% 
   count(aisle, aisle_id) %>% 
   filter(n >= 20000) %>% 
@@ -65,7 +59,7 @@ instacart %>%
 
 ### Amount of items bought each day
 
-```{r}
+```{r, eval = FALSE}
 q = instacart %>% 
   filter(aisle_id > 125) %>%  
   count(order_dow, aisle) %>% 
@@ -77,18 +71,14 @@ q = instacart %>%
                           "Saturday"))
   ) %>% 
   ggplot(aes(x = order_dow, y = n, color = aisle, group = aisle))+
-  geom_line()+
+  geom_line() +
   labs(
     x = "",
     y = ""
-  )+
+  ) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ggplotly(q) %>% 
   layout(barmode = 'stack',
          xaxis = list(title = "Day of the week"),
          yaxis = list(title = "n"))
 ```
-
-
-
-

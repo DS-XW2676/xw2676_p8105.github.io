@@ -12,7 +12,7 @@
 
 
 
-<title>Xinru Wang</title>
+<title>code for three plots</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -385,20 +385,66 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Xinru Wang</h1>
+<h1 class="title toc-ignore">code for three plots</h1>
 
 </div>
 
 
-<div id="about-me" class="section level2">
-<h2>About me</h2>
-<p>I am Xinru Wang, a first year master student in <a href="https://www.mailman.columbia.edu/become-student/departments/biostatistics">biostatistics department at Columbia University</a>.</p>
-<p>You can learn me more <a href="cv.html">here</a></p>
+<div id="hour-of-day-when-each-product-bought-in-each-day" class="section level3">
+<h3>Hour of day when each product bought in each day</h3>
+<pre class="r"><code>data(instacart)
+p = filter(instacart, product_name %in% c(&quot;Pink Lady Apples&quot;, &quot;Coffee Ice Cream&quot;)) %&gt;%  
+  mutate(
+    order_dow = as.factor(order_dow),
+    order_dow = factor(order_dow, levels = 0:6, labels = c(&quot;Sunday&quot;,&quot;Monday&quot;, &quot;Tuesday&quot;,
+                          &quot;Wednesday&quot;, 
+                          &quot;Thursday&quot;, &quot;Friday&quot;, 
+                          &quot;Saturday&quot;))
+  ) %&gt;% 
+  ggplot(aes(x = order_dow, y = order_hour_of_day, group = order_dow, color = order_dow)) +
+  geom_boxplot() +
+  facet_grid(~product_name) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(
+    x = &quot;&quot;,
+    y = &quot;&quot;
+  )
+ggplotly(p) %&gt;% 
+  layout(xaxis = list(title = &quot;Day of the week&quot;),
+         yaxis = list(title = &quot;Hour of the day&quot;))</code></pre>
 </div>
-<div id="about-this-website" class="section level2">
-<h2>About this website</h2>
-<p>This website contains <a href="cv.html">my academic and professional experience</a> and <a href="dashboard.html">three plotly plots</a> on flexdashboard.</p>
-<p><img src="images/bio-1500x632-1.jpeg" style="width:75%"></p>
+<div id="amount-of-items-20k-bought-from-each-aisles" class="section level3">
+<h3>Amount of items (&gt;20k) bought from each aisles</h3>
+<pre class="r"><code>instacart %&gt;% 
+  count(aisle, aisle_id) %&gt;% 
+  filter(n &gt;= 20000) %&gt;% 
+  mutate(text_label = str_c(&quot;Aisle: &quot;, aisle)) %&gt;% 
+  mutate(aisle_id = fct_reorder(as.factor(aisle_id), n)) %&gt;% 
+  plot_ly(x = ~aisle_id, y = ~n, color = ~aisle_id, text = ~text_label, textposition = &#39;middle right&#39;, type = &quot;bar&quot;)</code></pre>
+</div>
+<div id="amount-of-items-bought-each-day" class="section level3">
+<h3>Amount of items bought each day</h3>
+<pre class="r"><code>q = instacart %&gt;% 
+  filter(aisle_id &gt; 125) %&gt;%  
+  count(order_dow, aisle) %&gt;% 
+  mutate(
+    order_dow = as.factor(order_dow),
+    order_dow = factor(order_dow, levels = 0:6, labels = c(&quot;Sunday&quot;,&quot;Monday&quot;, &quot;Tuesday&quot;,
+                          &quot;Wednesday&quot;, 
+                          &quot;Thursday&quot;, &quot;Friday&quot;, 
+                          &quot;Saturday&quot;))
+  ) %&gt;% 
+  ggplot(aes(x = order_dow, y = n, color = aisle, group = aisle))+
+  geom_line() +
+  labs(
+    x = &quot;&quot;,
+    y = &quot;&quot;
+  ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ggplotly(q) %&gt;% 
+  layout(barmode = &#39;stack&#39;,
+         xaxis = list(title = &quot;Day of the week&quot;),
+         yaxis = list(title = &quot;n&quot;))</code></pre>
 </div>
 
 
