@@ -11,7 +11,7 @@ output:
 
 I am Xinru Wang, a first year master student in [biostatistics department at Columbia University](https://www.mailman.columbia.edu/become-student/departments/biostatistics). 
 
-you can learn me more [here](about.html)
+you can learn me more [here](cv.html)
 
 ## About this website
 
