@@ -5,12 +5,16 @@ navbar:
   right:
     - text: "CV"
       href: cv.html
-    - text: "Dashboard"
-      href: dashboard.html
+    - text: Data Manipulation
+      menu:
+      - text: dashboard
+        href: dashboard.html
+      - text: code
+        href: code.html
     - icon: fa-envelope fa-lg
-      href: mailto:<you@youremail.com>
+      href: mailto:<xw2676@cumc.columbia.edu>
     - icon: fa-github fa-lg
-      href: http://github.com/<YOUR_GH_NAME>/
+      href: http://github.com/xw2676-p8105
 output:
   html_document:
     theme: yeti
