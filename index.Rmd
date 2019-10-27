@@ -1,5 +1,5 @@
 ---
-title: "My awesome website"
+title: "Xinru Wang"
 output: 
   html_document:
     toc: true
@@ -7,14 +7,17 @@ output:
     theme: cerulean
 ---
 
-# This is Jeff's awesome website
+## About me
 
-![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
+I am Xinru Wang, a first year master student in [biostatistics department at Columbia University](https://www.mailman.columbia.edu/become-student/departments/biostatistics). 
 
-# here is my homework
-![](images/image.jpg)
+you can learn me more [here](about.html)
 
-you can learn me [here](about.html)
+## About this website
+
+This website contains [my academic and professional experience](cv.html) and [three plotly plots](dashboard.html) on flexdashboard.
+
+
 
 
 

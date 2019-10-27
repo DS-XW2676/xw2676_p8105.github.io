@@ -29,7 +29,7 @@ _The Data Scientist's Toolbox, R Programming, Getting and Cleaning Data, Explora
 
 ## Technical Skills
 
-_R, MATLAB, SAS, Latex, C, SPSS_
+R, MATLAB, SAS, Latex, C, SPSS
 
 ## LANGUAGES
 

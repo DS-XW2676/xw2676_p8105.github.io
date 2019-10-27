@@ -71,6 +71,16 @@ ggplotly(p) %>%
 ### Chart C
 
 ```{r}
-
+instacart %>% 
+  filter(aisle_id > 90) %>%  
+  count(order_dow, aisle_id) %>% 
+  mutate(
+    order_dow = as.factor(order_dow),
+    order_dow = factor(order_dow, levels = 0:6, labels = c("Sunday","Monday", "Tuesday",
+                          "Wednesday", 
+                          "Thursday", "Friday", 
+                          "Saturday"))
+  ) %>% 
+  plot_ly(x = ~order_dow, y = ~n, color = ~aisle_id, group = ~order_dow, type = "scatter")
 ```
 
