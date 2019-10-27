@@ -21,30 +21,13 @@ scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 ```
 
-Column {data-width=650}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
-### Chart A
+### Hour of day when each product bought in each day
 
 ```{r}
 data(instacart)
-instacart %>% 
-  count(aisle, aisle_id) %>% 
-  filter(n >= 20000) %>% 
-  mutate(text_label = str_c("Aisle: ", aisle)) %>% 
-  mutate(aisle_id = fct_reorder(as.factor(aisle_id), n)) %>% 
-  plot_ly(x = ~aisle_id, y = ~n, color = ~aisle_id, text = ~text_label, textposition = 'middle right', type = "bar") %>% 
-  layout(title = "Amount of items (>20k) bought from each aisles")
-
-
-```
-
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
-
-```{r}
 p = filter(instacart, product_name %in% c("Pink Lady Apples", "Coffee Ice Cream")) %>%  
   mutate(
     order_dow = as.factor(order_dow),
@@ -63,17 +46,29 @@ p = filter(instacart, product_name %in% c("Pink Lady Apples", "Coffee Ice Cream"
   )
 ggplotly(p) %>% 
   layout(xaxis = list(title = "Day of the week"),
-         yaxis = list(title = "Hour of the day"),
-         title = "Hour of day when each product bought in each day"
-         )
+         yaxis = list(title = "Hour of the day"))
 ```
 
-### Chart C
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Amount of items (>20k) bought from each aisles
 
 ```{r}
 instacart %>% 
-  filter(aisle_id > 90) %>%  
-  count(order_dow, aisle_id) %>% 
+  count(aisle, aisle_id) %>% 
+  filter(n >= 20000) %>% 
+  mutate(text_label = str_c("Aisle: ", aisle)) %>% 
+  mutate(aisle_id = fct_reorder(as.factor(aisle_id), n)) %>% 
+  plot_ly(x = ~aisle_id, y = ~n, color = ~aisle_id, text = ~text_label, textposition = 'middle right', type = "bar")
+```
+
+### Amount of items bought each day
+
+```{r}
+q = instacart %>% 
+  filter(aisle_id > 125) %>%  
+  count(order_dow, aisle) %>% 
   mutate(
     order_dow = as.factor(order_dow),
     order_dow = factor(order_dow, levels = 0:6, labels = c("Sunday","Monday", "Tuesday",
@@ -81,6 +76,19 @@ instacart %>%
                           "Thursday", "Friday", 
                           "Saturday"))
   ) %>% 
-  plot_ly(x = ~order_dow, y = ~n, color = ~aisle_id, group = ~order_dow, type = "scatter")
+  ggplot(aes(x = order_dow, y = n, color = aisle, group = aisle))+
+  geom_line()+
+  labs(
+    x = "",
+    y = ""
+  )+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ggplotly(q) %>% 
+  layout(barmode = 'stack',
+         xaxis = list(title = "Day of the week"),
+         yaxis = list(title = "Amount of items bought each day"))
 ```
+
+
+
 
