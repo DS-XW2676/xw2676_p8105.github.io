@@ -16,7 +16,7 @@ You can learn me more [here](cv.html)
 
 This website contains [my academic and professional experience](cv.html) and [three plotly plots](dashboard.html) on flexdashboard.
 
-![](images/cat.jpeg)
+![](images/cat.jpg)
 
 
 
